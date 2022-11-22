@@ -1,0 +1,76 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           todo-list-servant
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/alyoanton9/todo-list-servant#readme>
+homepage:       https://github.com/alyoanton9/todo-list-servant#readme
+bug-reports:    https://github.com/alyoanton9/todo-list-servant/issues
+author:         Alyona Antonova
+maintainer:     alyoanton9@gmail.com
+copyright:      No license
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/alyoanton9/todo-list-servant
+
+library
+  exposed-modules:
+      Api
+      Config
+      Entity
+      Init
+      Logger
+  other-modules:
+      Paths_todo_list_servant
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , http-client
+    , katip
+    , monad-logger
+    , mtl
+    , persistent
+    , persistent-postgresql
+    , servant-server
+    , wai
+    , wai-extra
+    , warp
+  default-language: Haskell2010
+
+executable todo-list-servant-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_todo_list_servant
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , todo-list-servant
+  default-language: Haskell2010
+
+test-suite todo-list-servant-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_todo_list_servant
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , todo-list-servant
+  default-language: Haskell2010
