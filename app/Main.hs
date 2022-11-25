@@ -1,6 +1,6 @@
 module Main (main) where
 
-import Init (runTaskList)
+import App (runTaskList)
 
 main :: IO ()
 main = runTaskList

@@ -1,17 +1,21 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Init
+module App
   ( runTaskList
   ) where
 
+import Control.Monad.Reader (runReaderT)
 import Database.Persist.Postgresql (runMigration, runSqlPool)
-import Network.Wai (Application)
 import Network.Wai.Handler.Warp (run)
+import Servant
 
 import Api
 import Config
 import Entity
+import Handlers
 import Logger
+
+-- Initializing and running
 
 runTaskList :: IO ()
 runTaskList = do
@@ -36,3 +40,14 @@ withConfig action = do
         , configPort   = defaultPort
         }
   action config
+
+-- Server
+
+taskListApp :: Config -> Application
+taskListApp config = serve taskListAPI $ taskListServer config
+
+taskListServer :: Config -> Server TaskListAPI
+taskListServer config = hoistServer taskListAPI (appToHandler config) taskListServerT
+
+appToHandler :: Config -> AppT IO a -> Handler a
+appToHandler config appT = Handler $ runReaderT (runApp appT) config

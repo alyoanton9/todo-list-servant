@@ -26,9 +26,10 @@ source-repository head
 library
   exposed-modules:
       Api
+      App
       Config
       Entity
-      Init
+      Handlers
       Logger
   other-modules:
       Paths_todo_list_servant
