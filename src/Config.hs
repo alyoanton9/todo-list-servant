@@ -2,26 +2,19 @@
 
 module Config
   ( Config(..)
-  , makePool
   , defaultPort
+  , connectionStr
+  , connectionsNumber
   ) where
 
-import Database.Persist.Postgresql (
-  ConnectionPool, ConnectionString, createPostgresqlPool)
+import Database.Persist.Postgresql (ConnectionPool, ConnectionString)
 import Network.Wai.Handler.Warp (Port)
-
-import Logger
 
 data Config
   = Config
-  { configPool   :: ConnectionPool
-  , configLogEnv :: LogEnv
-  , configPort   :: Port
+  { configPool :: ConnectionPool
+  , configPort :: Port
   }
-
-makePool :: LogEnv -> IO ConnectionPool
-makePool logEnv = runKatipT logEnv $
-  createPostgresqlPool connectionStr connectionsNumber
 
 -- Config constants
 

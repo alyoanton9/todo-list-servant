@@ -38,12 +38,12 @@ library:
   dependencies:
   - aeson
   - http-client
-  - katip
   - monad-logger
   - mtl
   - persistent
   - persistent-postgresql
   - servant-server
+  - text
   - wai
   - wai-extra
   - warp
@@ -58,6 +58,10 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - todo-list-servant
+    - monad-logger
+    - persistent-postgresql
+    - warp
+
 
 tests:
   todo-list-servant-test:

@@ -24,7 +24,8 @@ import Control.Monad.Reader (MonadIO, MonadReader, asks, liftIO)
 import Data.Aeson
 import Database.Persist
 import Database.Persist.Sql (SqlPersistT, runSqlPool)
-import Database.Persist.TH (mkMigrate, mkPersist, persistLowerCase, share, sqlSettings)
+import Database.Persist.TH (
+  mkMigrate, mkPersist, persistLowerCase, share, sqlSettings)
 
 import Config (Config, configPool)
 
@@ -34,6 +35,7 @@ TaskS
     deriving Show
 |]
 
+-- | Make query to a database.
 runDB
   :: (MonadReader Config m, MonadIO m)
   => SqlPersistT IO a -> m a
@@ -41,7 +43,7 @@ runDB query = do
   pool <- asks configPool
   liftIO $ runSqlPool query pool
 
--- Instances
+-- Task instances
 
 instance ToJSON TaskS where
   toJSON task = object ["content" .= taskSContent task]
