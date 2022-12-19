@@ -11,11 +11,11 @@ import Entity
 
 type TaskListAPI
   =   "api" :> "task" :>
-    (    Get '[JSON] [Entity TaskS]
-    :<|> ReqBody '[JSON] TaskS :> Post '[JSON] (Entity TaskS)
+    (    Get '[JSON] [Entity Task]
+    :<|> ReqBody '[JSON] Task :> Post '[JSON] (Entity Task)
     )
-  :<|> "api" :> "task" :> Capture "taskId" TaskSId :>
-    (    Get '[JSON] (Entity TaskS)
-    :<|> ReqBody '[JSON] TaskS :> Put '[JSON] (Entity TaskS)
-    :<|> Delete '[JSON] (Entity TaskS)
+  :<|> "api" :> "task" :> Capture "taskId" TaskId :>
+    (    Get '[JSON] (Entity Task)
+    :<|> ReqBody '[JSON] Task :> Put '[JSON] (Entity Task)
+    :<|> Delete '[JSON] (Entity Task)
     )

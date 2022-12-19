@@ -13,8 +13,8 @@
 {-# LANGUAGE FlexibleContexts           #-}
 
 module Entity
-  ( TaskS (..)
-  , TaskSId
+  ( Task (..)
+  , TaskId
   , Entity (..)
   , migrateAll
   , runDB
@@ -30,7 +30,7 @@ import Database.Persist.TH (
 import Config (Config, configPool)
 
 share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
-TaskS
+Task
     content String
     deriving Show
 |]
@@ -45,15 +45,15 @@ runDB query = do
 
 -- Task instances
 
-instance ToJSON TaskS where
-  toJSON task = object ["content" .= taskSContent task]
+instance ToJSON Task where
+  toJSON task = object ["content" .= taskContent task]
 
-instance FromJSON TaskS where
-  parseJSON = withObject "TaskS" $ \v -> TaskS
+instance FromJSON Task where
+  parseJSON = withObject "Task" $ \v -> Task
     <$> v .: "content"
 
-instance ToJSON (Entity TaskS) where
+instance ToJSON (Entity Task) where
   toJSON (Entity taskId task) = object
     [ "id"   .= taskId
-    , "content" .= taskSContent task
+    , "content" .= taskContent task
     ]

@@ -39,28 +39,28 @@ taskListServerT =
 
 -- Handlers implementations
 
-getEntityTasks ::  App [Entity TaskS]
+getEntityTasks ::  App [Entity Task]
 getEntityTasks = runDB $ selectList [] []
 
-createEntityTask :: TaskS -> App (Entity TaskS)
+createEntityTask :: Task -> App (Entity Task)
 createEntityTask task = do
   taskId <- runDB $ insert task
   return $ Entity taskId task
 
-getEntityTaskById :: TaskSId -> App (Entity TaskS)
+getEntityTaskById :: TaskId -> App (Entity Task)
 getEntityTaskById taskId = do
   maybeTask <- runDB $ get taskId
   case maybeTask of
     Just task -> return $ Entity taskId task
     Nothing   -> throwError err404
 
-deleteEntityTaskById :: TaskSId -> App (Entity TaskS)
+deleteEntityTaskById :: TaskId -> App (Entity Task)
 deleteEntityTaskById taskId = do
   entityTask <- getEntityTaskById taskId
   runDB $ delete taskId
   return $ entityTask
 
-replaceEntityTaskById :: TaskSId -> TaskS -> App (Entity TaskS)
+replaceEntityTaskById :: TaskId -> Task -> App (Entity Task)
 replaceEntityTaskById taskId task = do
   _ <- getEntityTaskById taskId
   runDB $ replace taskId task
