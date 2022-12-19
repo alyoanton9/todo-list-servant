@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings          #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 module Config
   ( Config(..)
@@ -19,7 +19,7 @@ data Config
 -- Config constants
 
 connectionStr :: ConnectionString
-connectionStr = "host=localhost dbname=postgres user=postgres password=postgres port=5432"
+connectionStr = "host=localhost dbname=todolist-servant user=postgres password=postgres port=5432"
 
 connectionsNumber :: Int
 connectionsNumber = 10
