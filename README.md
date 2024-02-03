@@ -16,11 +16,9 @@ This code complements the talk "How to Choose a Haskell Web Framework" I present
 
 In this talk, I show how some of Haskell web tools approach web development. In particular, there are 3 of them — Servant, Yesod and IHP.
 
-There are also corresponding [Yesod](https://github.com/alyoanton9/todo-list-yesod) and [IHP](https://github.com/alyoanton9/todo-list-ihp) TODO-list implementations.
+**There are also corresponding [Yesod](https://github.com/alyoanton9/todo-list-yesod) and [IHP](https://github.com/alyoanton9/todo-list-ihp) TODO-list implementations.**
 
-Slides are available [here](https://res.cloudinary.com/skillsmatter/image/upload/v1670493528/ullkvqlzgyvs2ptqvf7j.pdf).
-
-The talk recording could be found at [Skills Matter site](https://skillsmatter.com/skillscasts/18103-how-to-choose-a-haskell-web-framework) after the 1st of March 2023.
+**Check out the [presentation slides](https://drive.google.com/file/d/17K6s0V3C2qL_dy82EzGH29vmmRqBjcUj/view?usp=sharing) and the [talk recording](https://drive.google.com/file/d/1phbv3ghdMDjGTvOCU5Xw3St2Zzv2ZBNt/view?usp=sharing), and [contact me](https://www.linkedin.com/in/alyoanton/) if you have any questions** 🙂 
 
 
 ## API
